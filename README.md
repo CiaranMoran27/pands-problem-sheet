@@ -115,7 +115,7 @@ print(numberList)
 
 ### References:
 1. Cunningham, P, 2014, Check if input is positive integer, viewed 19 Feb 2021, <br/>*<https://stackoverflow.com/questions/26198131/check-if-input-is-positive-integer>*.
-2. Real Python, 2021, 8.3 Handling exceptions, viewed 19 Feb 2021,*<https://docs.python.org/3/tutorial/errors.html>*.
+2. Real Python, 2021, The try and except Block: Handling Exceptions, viewed 19 Feb 2021,*<https://realpython.com/python-exceptions/>*.
 3. Programiz, 2021, What is the use of break and continue in Python?, viewed 19 Feb 2021,<br/>*<https://www.programiz.com/python-programming/break-continue>*.  
 
 <br/>
@@ -123,7 +123,7 @@ print(numberList)
 
 ## Task 4: (weekday.py):
 
-*Write a program that takes asks a user to input a string and outputs every second letter in reverse order.*
+*Write a program that outputs whether or not today is a weekday.*
 <br/>
 
 ### Code:
@@ -157,12 +157,75 @@ for key, value in weekIndex.items():
     - Keys are set to 0-6 which represent the index of the days of the week (i.e index 0 = Monday, index 6 = Sunday).
     - Values distunguish between weekdays or weekend.
     - The *todaysDate* variable uses the *.date.today* methods of  datetime library to obtain todays date.
-    - The *dayIndex* variable uses the *.weekday* method of  datetime library to convert todays date to an index number(0 - 6).
+    - The *dayIndex* variable uses the *.weekday* method of  datetime library to convert todays date to an index <br/>number(0 - 6).
 - The key, value pairs of dictionary *weekIndex* are iterated over until the key = *dayIndex* value.
-    - When the above condition is met, the corresponding value of the key is checked in a boolean (to see if it reads "Weekend" or "Weekday") and one of two print statements are executed.
+    - When the above condition is met, the corresponding value of the key is checked in a boolean (to see if it reads <br/>"Weekend" or "Weekday") and one of two print statements are executed.
 
 <br/>
 
 ### References:
 1. Sweigart, A, 2015, Automate the boring stuff with Python, Dictionaries and structuring data, No Starch press,<br/> San Francisco, pp 120.
-2. Docs.python.org, 2021, Datetime — Basic date and time types — Python 3.9.2 Documentation, viewed 20 Feb 2021,*<https://docs.python.org/3/library/datetime.html#datetime.datetime.weekday>*.
+2. Docs.python.org, 2021, Datetime — Basic date and time types — Python 3.9.2 Documentation, viewed 20 Feb 2021,<br/>*<https://docs.python.org/3/library/datetime.html#datetime.datetime.weekday>*.
+
+
+
+## Task 5: (squareroot.py):
+
+*Write a program that takes a positive floating-point number as input and outputs an approximation of its square root.*
+<br/>
+
+### Code:
+``` Python
+
+def userValidation():
+    while True:
+        number = input("Please enter a positive number: ")
+        try:
+
+            numberFloat = float(number)  
+            if numberFloat < 0:          
+                continue                           
+            else:
+                sqrt(numberFloat)           
+                break   
+
+        except ValueError:           
+            continue            
+
+
+def sqrt(numberFloat,tolerance = 0.000001):         
+    estimate = numberFloat                          
+    diff = 9999999999                              
+
+    while diff > tolerance:                         
+        newEstimate = estimate - ((estimate**2 - numberFloat) / (2*estimate))   
+        estimate = newEstimate     
+        diff = newEstimate - estimate                  
+        diff = abs(diff)                               
+                            
+    print("The square root of {} is approx. {}".format(numberFloat,round(newEstimate,2))) 
+
+userValidation() 
+```
+
+### Code breakdown:
+- User is asked for a positive integer.
+- **User Validation function** is designed to validate the user input in the block of code between  *try* and *except* where:
+    - Tries to convert the input string to a float, if this fails a *ValueError* is raised and the program asks the <br/> user to enter a positive numberand jumps back to the start of the while loop.
+    - Assuming that point 1 above has executed sucessfully (i.e the user input can be cast as a float) the program <br/>checks if the float is negative, in which case  the program asks user to enter a positive number and jumps <br/> back to the <br/>start of the while loop.
+    - Condintinal that the user input meets the preceeding criteria, the input is passed into the *sqrt* function.
+ - **Square Root Function** uses Newton's method for approximating square root which works by producing successively <br/>better approximations:
+     - The function recieves the user input *numberFloat* which is re-defined as *estimate*.
+     - The function parameter *tolerance* is set to a low number. Assigning a low number is important as it will play <br/>a part in determining when the proceeding while loop will break.
+     - A variable called *diff* is set to a large number to ensure the first iteration of the while loop will run <br/>(i.e *while diff > tolerance*).
+     - The *newEstimate* variable is dervied by passing the userinput into Newtons Equation,  and then refining itself <br/>to *estimate* (for further use on next while loop iteration).
+     - If the difference between the *newEstimate* and *estimate* (i.e user input on first iteration) is greater than <br/>the tolerance limit set, the while loop restarts, however when its less the output is printed.
+
+### References:
+1. Real Python, 2021, Defining Your Own Python Function,Argument Passing, viewed 27 Feb 2021,<br/>*<https://realpython.com/defining-your-own-python-function/#argument-passing>*.
+2. Sıddık Açıl, 2018, Newton Square Root Method in Python, viewed 27 Feb 2021, <br/>*<https://medium.com/@sddkal/newton-square-root-method-in-python-270853e9185d>*
+3. Approximating Square Roots w/ Newton's Method,2018, added by Nerdfirst, viewed 27 Feb 2021 <br/>*<https://www.youtube.com/watch?v=tUFzOLDuvaE&t=1042s>*
+
+
+
+
