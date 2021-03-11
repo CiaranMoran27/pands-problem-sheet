@@ -165,7 +165,8 @@ for key, value in weekIndex.items():
 
 ### References:
 1. Sweigart, A, 2015, Automate the boring stuff with Python, Dictionaries and structuring data, No Starch press,<br/> San Francisco, pp 120.
-2. Docs.python.org, 2021, Datetime — Basic date and time types — Python 3.9.2 Documentation, viewed 20 Feb 2021,<br/>*<https://docs.python.org/3/library/datetime.html#datetime.datetime.weekday>*.
+2. Docs.python.org, 2021, Datetime — Basic date and time types — Python 3.9.2 Documentation, viewed 20 Feb 2021,<br/>
+*<https://docs.python.org/3/library/datetime.html#datetime.datetime.weekday>*.
 
 <br/>
 
@@ -210,11 +211,15 @@ userValidation()
 
 ### Code breakdown:
 - User is asked for a positive integer.
+    <br/>
+
 - **User Validation function** is designed to validate the user input in the block of code between  *try* and *except* where:
-    - Tries to convert the input string to a float, if this fails a *ValueError* is raised and the program asks the <br/> user to enter a positive numberand jumps back to the start of the while loop.
-    - Assuming that point 1 above has executed sucessfully (i.e the user input can be cast as a float) the program <br/>checks if the float is negative, in which case  the program asks user to enter a positive number and jumps <br/> back to the <br/>start of the while loop.
-    - Condintinal that the user input meets the preceeding criteria, the input is passed into the *sqrt* function.
- - **Square Root Function** uses Newton's method for approximating square root which works by producing successively <br/>better approximations:
+    1. Tries to convert the input string to a float, if this fails a *ValueError* is raised and the program asks the <br/> user to enter a positive numberand jumps back to the start of the while loop.
+    2. Assuming that point 1 above has executed sucessfully (i.e the user input can be cast as a float) the program <br/>checks if the float is negative, in which case  the program asks user to enter a positive number and jumps  back to the <br/>start of the while loop.
+    3. Condintinal that the user input meets the preceeding criteria, the input is passed into the *sqrt* function.
+   <br/>
+
+ - **Square Root Function** uses Newton's method for approximating square root which works by producing successively better approximations:
      - The function recieves the user input *numberFloat* which is re-defined as *estimate*.
      - The function parameter *tolerance* is set to a low number. Assigning a low number is important as it will play <br/>a part in determining when the proceeding while loop will break.
      - A variable called *diff* is set to a large number to ensure the first iteration of the while loop will run <br/>(i.e *while diff > tolerance*).
@@ -286,9 +291,11 @@ eCharacterCount(data)
 # TO BE DONE
 
 ### References:
-1. Docs.python.org, 2021, 7.2. Reading and Writing Files — Python 3.9.2 Documentation, viewed 05 March 2021,<br/> *<https://docs.python.org/3/tutorial/inputoutput.html>*.
-2. GeeksforGeeks, 2019, With statement in Python, viewed 05 March 2021, *<https://www.geeksforgeeks.orgwith-statement-in-python>*.
-3. Gutenberg.org, 2000, Moby Dick, viewed 05 March 2021, *<https://www.gutenberg.org/files/2701/old/moby10b.txt>*
+1. Docs.python.org, 2021, 7.2. Reading and Writing Files — Python 3.9.2 Documentation, viewed 05 March 2021,<br/> 
+*<https://docs.python.org/3/tutorial/inputoutput.html>*.
+2. GeeksforGeeks, 2019, With statement in Python, viewed 05 March 2021,<br/>
+*<https://www.geeksforgeeks.orgwith-statement-in-python>*.
+3. Gutenberg.org, 2000, Moby Dick, viewed 05 March 2021,*<https://www.gutenberg.org/files/2701/old/moby10b.txt>*
 
 
 <br/>
@@ -298,7 +305,7 @@ eCharacterCount(data)
 
 ## Task 7: (plottask.py):
 
-*This program reads displays a plot of the functions f(x)=x, g(x)=x^2 and h(x)=x^3 in the range [0, 4] on the one set of axes.*
+*This program  displays a plot of the functions f(x)=x, g(x)=x^2 and h(x)=x^3 in the range [0, 4] on the one set of axes.*
 <br/>
 
 ### Code:
@@ -367,17 +374,17 @@ writePlot(myPlot)
 # TO BE DONE
 
 ### References:
-1. Eric, 2015, Save matplotlib file to a directory, viewed 11 March 2021,
+1. Eric, 2015, Save matplotlib file to a directory, viewed 11 March 2021,<br/>
 *<https://stackoverflow.com/questions/11373610/save-matplotlib-file-to-a-directory>*.
-2. Nick T, 2014, How to change plot background color?, viewed 11 March 2021,
+2. Nick T, 2014, How to change plot background color?, viewed 11 March 2021,<br/>
 *<https://stackoverflow.com/questions/14088687/how-to-change-plot-background-color>*
-3. Matplotlib.org, 2021, Controlling the legend entries, Matplotlib version 3.3.3, viewed 11 March 2021,
+3. Matplotlib.org, 2021, Controlling the legend entries, Matplotlib version 3.3.3, viewed 11 March 2021,<br/>
 *<https://matplotlib.org/3.3.3/tutorials/intermediate/legend_guide.html>*
-4. Matplotlib.org, 2021, Plotting multiple sets of data, Matplotlib version 3.3.4, viewed 11 March 2021,
+4. Matplotlib.org, 2021, Plotting multiple sets of data, Matplotlib version 3.3.4, viewed 11 March 2021,<br/>
 *<https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html>*
-5. Moonbooks.org, 2019, How to add a grid on a figure in matplotlib?, viewed 11 March 2021,
+5. Moonbooks.org, 2019, How to add a grid on a figure in matplotlib?, viewed 11 March 2021,<br/>
 *<https://moonbooks.org/Articles/How-to-add-a-grid-on-a-figure-in-matplotlib-/>*
-6. Real Python, 2021, NumPy arange(): How to Use np.arange(), viewed 11 March 2021,
+6. Real Python, 2021, NumPy arange(): How to Use np.arange(), viewed 11 March 2021,<br/>
 *<https://realpython.com/how-to-use-numpy-arange/>*
 
 <br/>
