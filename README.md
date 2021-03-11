@@ -167,7 +167,7 @@ for key, value in weekIndex.items():
 1. Sweigart, A, 2015, Automate the boring stuff with Python, Dictionaries and structuring data, No Starch press,<br/> San Francisco, pp 120.
 2. Docs.python.org, 2021, Datetime — Basic date and time types — Python 3.9.2 Documentation, viewed 20 Feb 2021,<br/>*<https://docs.python.org/3/library/datetime.html#datetime.datetime.weekday>*.
 
-
+<br/>
 
 ## Task 5: (squareroot.py):
 
@@ -225,6 +225,193 @@ userValidation()
 1. Real Python, 2021, Defining Your Own Python Function,Argument Passing, viewed 27 Feb 2021,<br/>*<https://realpython.com/defining-your-own-python-function/#argument-passing>*.
 2. Sıddık Açıl, 2018, Newton Square Root Method in Python, viewed 27 Feb 2021, <br/>*<https://medium.com/@sddkal/newton-square-root-method-in-python-270853e9185d>*
 3. Approximating Square Roots w/ Newton's Method,2018, added by Nerdfirst, viewed 27 Feb 2021 <br/>*<https://www.youtube.com/watch?v=tUFzOLDuvaE&t=1042s>*
+
+<br/>
+<br/>
+
+
+## Task 6: (es.py):
+
+*This program reads in a text file that is requested by user and outputs the number of "e" characters in the file.*
+<br/>
+
+### Code:
+``` Python
+
+import os
+
+os.chdir(os.path.dirname(__file__))     
+
+def userInput():
+    choice = input("Enter text file name for uppercase/lowercase 'e' character count: ").strip()
+    return choice
+
+
+def readFile(choice):
+    while True:
+        try:
+
+            with open(choice,'r') as f:           
+                data = (f.read())                   
+                return data
+
+        except IOError:                        
+            print("This file does not exist")
+            choice =userInput()                   
+            continue                              
+
+def eCharacterCount(data):
+    e_List = []
+    E_List = [] 
+
+    for line in data:
+        for character in line:
+            if character == 'e':
+                e_List.append(character)
+            elif character == 'E':
+                E_List.append(character)
+
+    print("There are {} lowercase 'e' characters in this text file".format(len(e_List)))
+    print("There are {} uppercase 'E' characters in this text file".format(len(E_List)))
+
+
+choice = userInput()                             
+data = readFile(choice)
+eCharacterCount(data)
+ 
+
+```
+
+### Code breakdown:
+# TO BE DONE
+
+### References:
+1. Docs.python.org, 2021, 7.2. Reading and Writing Files — Python 3.9.2 Documentation, viewed 05 March 2021,<br/> *<https://docs.python.org/3/tutorial/inputoutput.html>*.
+2. GeeksforGeeks, 2019, With statement in Python, viewed 05 March 2021, *<https://www.geeksforgeeks.orgwith-statement-in-python>*.
+3. Gutenberg.org, 2000, Moby Dick, viewed 05 March 2021, *<https://www.gutenberg.org/files/2701/old/moby10b.txt>*
+
+
+<br/>
+<br/>
+
+
+
+## Task 7: (plottask.py):
+
+*This program reads displays a plot of the functions f(x)=x, g(x)=x^2 and h(x)=x^3 in the range [0, 4] on the one set of axes.*
+<br/>
+
+### Code:
+``` Python
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+x = np.arange(0,4,1)                             
+                                                                                               
+y1  =  x                                         
+y2  =  x**2                                       
+y3  =  x**3                                       
+
+xy1_Colour = 'red'
+xy2_Colour = 'green'
+xy3_Colour = 'blue'
+
+xy1_linestype = 'dashed'
+xy2_linestype = 'dashed'
+xy3_linestype = 'dashed'
+
+xy1_label = 'f(x)=x'
+xy2_label = 'g(x)=x^2'
+xy3_label = 'h(x)=x^3'
+
+xAxisLabel = 'x - axis'
+yAxisLabel = 'y - axis'
+xAxisFontSize = 12
+yAxisFontSize = 12
+
+plotAreaColour = "lightgrey"
+
+ax = plt.axes()
+
+
+def customPlot(ax = None):
+
+    plt.plot(x, y1, color = xy1_Colour, linestyle = xy1_linestype, label = xy1_label)
+    plt.plot(x, y2, color = xy2_Colour, linestyle = xy2_linestype, label = xy2_label)
+    plt.plot(x, y3, color = xy3_Colour, linestyle = xy3_linestype, label = xy3_label)
+
+    plt.xlabel(xAxisLabel, fontsize = xAxisFontSize)
+    plt.ylabel(yAxisLabel, fontsize = yAxisFontSize)
+
+    plt.legend(bbox_to_anchor=(0,1.02,1,0.2), loc="lower left",mode="expand", borderaxespad=0, ncol=3, fontsize = 14)
+    plt.grid(True,which="both", linestyle='--')
+
+    ax = plt.axes()
+    ax.set_facecolor(plotAreaColour)
+    plt.show()
+    return plt
+
+
+def writePlot(writePlot):
+    plt.savefig('plottask.png')
+    
+
+myPlot = customPlot()
+writePlot(myPlot)
+ 
+
+```
+
+### Code breakdown:
+# TO BE DONE
+
+### References:
+1. Eric, 2015, Save matplotlib file to a directory, viewed 11 March 2021,
+*<https://stackoverflow.com/questions/11373610/save-matplotlib-file-to-a-directory>*.
+2. Nick T, 2014, How to change plot background color?, viewed 11 March 2021,
+*<https://stackoverflow.com/questions/14088687/how-to-change-plot-background-color>*
+3. Matplotlib.org, 2021, Controlling the legend entries, Matplotlib version 3.3.3, viewed 11 March 2021,
+*<https://matplotlib.org/3.3.3/tutorials/intermediate/legend_guide.html>*
+4. Matplotlib.org, 2021, Plotting multiple sets of data, Matplotlib version 3.3.4, viewed 11 March 2021,
+*<https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html>*
+5. Moonbooks.org, 2019, How to add a grid on a figure in matplotlib?, viewed 11 March 2021,
+*<https://moonbooks.org/Articles/How-to-add-a-grid-on-a-figure-in-matplotlib-/>*
+6. Real Python, 2021, NumPy arange(): How to Use np.arange(), viewed 11 March 2021,
+*<https://realpython.com/how-to-use-numpy-arange/>*
+
+<br/>
+<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
