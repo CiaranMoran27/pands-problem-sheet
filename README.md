@@ -380,7 +380,7 @@ writePlot(myPlot)
 
 ### Output Plot:
 <p align="center">
-  <img src="/plottask.png" width="500" />
+  <img src="plottask.png" width="500" />
 </p>  <Source: https://image.ibb.co/gw4Gen/Index_GMIT.png>
 
 ### References:
