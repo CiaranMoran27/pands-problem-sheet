@@ -4,8 +4,8 @@
 # Author: Ciaran Moran
 
 sentence = input("Please enter a sentence: ")
-reverse_string = sentence[::-2]
-print(reverse_string)
+reverseString = sentence[::-2]
+print(reverseString)
 
 # References: 
 # Stored on read me file

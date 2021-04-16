@@ -7,10 +7,10 @@ height = float(input("What is your height in centimetres?:"))
 weight = float(input("What is your weight kilograms?:"))
 
 #Converts height from cm to m²
-metres_sq = (height/100)**2
+metresSquared = (height/100)**2
 
 # Computes BMI
-bmi = round(weight / metres_sq,2)
+bmi = round(weight / metresSquared,2)
 
 #Prints BMI Output
 print("BMI is " + str(bmi) + ' kg/m²')

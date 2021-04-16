@@ -16,8 +16,8 @@ This README file gives a more in-depth explanation of the code used to complete 
 ``` Python
 height = float(input("What is your height in centimetres?:"))
 weight = float(input("What is your weight kilograms?:"))
-metres_sq = (height/100)**2
-bmi = round(weight / metres_sq,2)
+metresSquared = (height/100)**2
+bmi = round(weight / metresSquared,2)
 print("BMI is " + str(bmi) + ' kg/m²')
 ```
 
@@ -45,8 +45,8 @@ print("BMI is " + str(bmi) + ' kg/m²')
 ### Code:
 ``` Python
 sentence = input("Please enter a sentence: ")
-reverse_string = sentence[::-2]
-print(reverse_string)
+reverseString = sentence[::-2]
+print(reverseString)
 ```
 
 ### Code breakdown:
@@ -107,12 +107,11 @@ print(numberList)
 - User is asked for a positive integer.
 - **First While loop** is designed to validate the user input in the block of code between  *try* and *except* where:
     - Tries to convert the input string to an integer, if this fails a *ValueError* is raised and the program asks the user to enter an integer and jumps back to the start of the while loop.
-    - Assuming that point 1 above has executed sucessfully (i.e the user input can be cast as an integer) the program checks if the integer is negative, in which case the program asks user to Enter a positive number and jumps back to the start of the while loop.
+    - Assuming that point 1 above has executed sucessfully (i.e the user input can be cast as an integer) the program checks if the integer is negative, in which case the program asks user to enter a positive number and jumps back to the start of the while loop.
  - **Second While loop** performs sucessive calculations on user input and resulting values until the resulting value=1. 
-     - Checks if the remainder of the user input divided by 2 = 0 (i.e is it even), in which case the program re-defines<br/>the *numberInt* variable as itself divide by 2 and appends it to *numberList*.
-     - Checks if the remainder of the user input divided by 2 != 0 (i.e is it odd), in which case the program re-defines<br/>the *numberInt* variable as (itself divided by 3) + 1 and appends it to *numberList*.
-         - The while loop runs re-uses the newly defined *numberInt* variable until the value = 1, then the list is <br/>printed.
-<br/>
+     - It Checks if the remainder of the user input divided by 2 = 0 (i.e is it even), in which case the program re-defines the *numberInt* variable as itself divide by 2 and appends it to *numberList*.
+     - If the above operation is False the loop will check if the remainder of the user input divided by 2 != 0 (i.e is it odd), in which case the program re-defines the *numberInt* variable as itself multiply by 3 + 1 and appends it to *numberList*.
+         - The while loop re-uses the newly defined *numberInt* variable until the value = 1, then the list is printed.
 <br/>
 
 ### References:
@@ -156,10 +155,9 @@ else:
 ### Code breakdown:
 - The datetime module is imported
 - Dictionary named weekIndex is declared:
-    - Keys are set to 0-6 which represent the index of the days of the week (i.e index 0 = Monday, index 6 = Sunday).
-    - Values distunguish between the days of the week.
+    - Keys are set to 0-6 which represent the index of the days of the week (i.e index 0 = Monday, index 6 = Sunday). Values distunguish between the days of the week.
     - The *todaysDate* variable uses the *.date.today* methods of  datetime library to obtain todays date.
-    - The *dayIndex* variable uses the *.weekday* method of  datetime library to convert todays date to an index <br/>number(0 - 6).
+    - The *dayIndex* variable uses the *.weekday* method of datetime library to convert todays date to an index number(0 - 6).
     <br/>
 - The dayIndex is checked in a if statement, 
     - if the value is greater than 4 the weekend message is printed and the dictionary is used to print the day of the week using the dayIndex as a reference. 
@@ -220,7 +218,7 @@ userValidation(number)
 - **User Validation function** is designed to validate the user input in the block of code between  *try* and *except* where the function:
     - Tries to convert the input string to a float, if this fails a *ValueError* is raised and the program asks the user to enter a positive number and jumps back to the start of the while loop.
     - Assuming that point 1 above has executed sucessfully (i.e the user input can be cast as a float) the program checks if the float is negative, in which case the program asks user to enter a positive number and jumps back to the start of the while loop.
-    - Condintinal that the user input meets the preceeding criteria, the input is passed into the *sqrt* function.
+    - Conditional that the user input meets the preceeding criteria, the input is passed into the *sqrt* function.
    <br/>
 
  - **Square Root Function** uses Newton's method for approximating square root which works by producing successively better approximations:
@@ -257,13 +255,13 @@ def readFile(filename):
         
 
 def eCharacterCount(data):
-    eCount = data.count("e")                                   
-    ECount = data.count("E")
-    eTotal = eCount + ECount
+    eLowerCount = data.count("e")                                   
+    eUpperCount = data.count("E")
+    eTotalCount = eCount + ECount
 
-    print("There are {} lowercase 'e' characters in this text file".format(eCount))
-    print("There are {} uppercase 'E' characters in this text file".format(ECount))    
-    print("There are {} total 'e' characters in this text file (case independant)".format(eTotal))
+    print("There are {} lowercase 'e' characters in this text file".format(eLowerCount))
+    print("There are {} uppercase 'E' characters in this text file".format(eUpperCount))    
+    print("There are {} total 'e' characters in this text file (case independant)".format(eTotalCount))
  
 data = readFile(filename)
 eCharacterCount(data)
@@ -271,7 +269,8 @@ eCharacterCount(data)
 
 ### Code breakdown:
 
-- **.argv[]**  #This method of the system library accepts arguements from the command line and stores them<br/>in a list. The list contains the filename as the first argument (index 0) and any further arguments are stored in the proceeding index values. In this script sys.argv[1] is stored in the filename variable.
+- **.argv[]** 
+    - This method of the system library accepts arguements from the command line and stores them<br/>in a list. The list contains the filename as the first argument (index 0) and any further arguments are stored in the proceeding index values. In this script sys.argv[1] is stored in the filename variable.
    <br/>
 
 - **readFile Function:**
@@ -283,16 +282,18 @@ eCharacterCount(data)
 - **eCharacterCount Function:**
     - This function recieves the data variable which contains the file that was read in previously.
     - Note: String count() method iterators over a string to return a count of a specified substring.
-    - Three eCount variables are declared, these store the number of upper/lowercase and total e characters<br/>(obtained using the count() method). the contents of these variables are printed with descriptors.
+    - Three eCount variables are declared, these store the number of upper/lowercase and total e characters<br/>
+    - The contents of these variables are printed with descriptors.
    <br/>
 
 
 ### References:
-1. Docs.python.org, 2021, 7.2. Reading and Writing Files — Python 3.9.2 Documentation, viewed 05 March 2021,<br/> 
+1. Burgaud, A, 2021, Python Command line arguements, Real Python, viewed 16 Apr 2021,  *<https://github.com/CiaranMoran27/pands-problem-sheet>*.<br/>
+2. Docs.python.org, 2021, 7.2. Reading and Writing Files — Python 3.9.2 Documentation, viewed 05 March 2021,<br/> 
 *<https://docs.python.org/3/tutorial/inputoutput.html>*.
-2. GeeksforGeeks, 2019, With statement in Python, viewed 05 March 2021,<br/>
+3. GeeksforGeeks, 2019, With statement in Python, viewed 05 March 2021,<br/>
 *<https://www.geeksforgeeks.orgwith-statement-in-python>*.
-3. Gutenberg.org, 2000, Moby Dick, viewed 05 March 2021,<br/>*<https://www.gutenberg.org/files/2701/old/moby10b.txt>*.
+4. Gutenberg.org, 2000, Moby Dick, viewed 05 March 2021,<br/>*<https://www.gutenberg.org/files/2701/old/moby10b.txt>*.
 
 
 <br/>
@@ -326,7 +327,7 @@ xy3_Colour = 'blue'
 
 xAxisLabel = 'x - axis'
 yAxisLabel = 'y - axis'
-AxisFontSize = 12 
+axisFontSize = 12 
 
 xy_linetype =  'dashed'
 plotAreaColour = "lightgrey"
@@ -337,8 +338,8 @@ def customPlot():
     plt.plot(x, y2, color = xy2_Colour, linestyle = xy_linetype, label = xy2_label)
     plt.plot(x, y3, color = xy3_Colour, linestyle = xy_linetype, label = xy3_label)
 
-    plt.xlabel(xAxisLabel, fontsize = AxisFontSize)
-    plt.ylabel(yAxisLabel, fontsize = AxisFontSize)
+    plt.xlabel(xAxisLabel, fontsize = axisFontSize)
+    plt.ylabel(yAxisLabel, fontsize = axisFontSize)
 
     plt.legend(bbox_to_anchor=(0,1.02,1,0.2), loc="lower left",mode="expand", borderaxespad=0, ncol=3, fontsize = 14)
     plt.grid(True,which="both", linestyle='--')
@@ -361,9 +362,9 @@ writePlot(myPlot)
 ### Code breakdown:
 
 - **Declaring  Variables** 
-    - An array of 0 to 4 in steps of 1 are stored in the x variable, achieved using the numpy library.
+    - An array of 0 to 4 in steps of 1 are stored in the x variable, achieved using the np.arange() function.
     - x, x squared and x cubed arrays are stored in y, y1 and y2 variables respectively.
-    - Plot descriptors such as axis labels, legend labels, linetype, series colours and plot colour are stored in<br/>multiple variables 
+    - Plot descriptors such as axis labels, legend labels, linetype, series colours and plot colour are stored in variables.
 
 - **customPlot function** 
     - Passes the pre-declared plot variables into the of the plot function of the Matplotlib library.
@@ -373,9 +374,14 @@ writePlot(myPlot)
 - **writePlot Function:**
     - This function recieves the myPlot variable (i.e customPlot return statement).
     - The directory is changed to that of the this file using *os.chdir(os.path.dirname(__file__)).*
-    - plot stored in myPlot variable is saved as extension .png.
+    - Plot is saved as extension .png.
 
+<br/>
 
+### Output Plot:
+<p align="center">
+  <img src="/plottask.png" width="500" />
+</p>  <Source: https://image.ibb.co/gw4Gen/Index_GMIT.png>
 
 ### References:
 1. Eric, 2015, Save matplotlib file to a directory, viewed 11 March 2021,<br/>

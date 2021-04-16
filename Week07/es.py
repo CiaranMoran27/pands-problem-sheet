@@ -25,13 +25,13 @@ def readFile(filename):
 
 
 def eCharacterCount(data):
-    eCount = data.count("e")                       # use of .count method to count occurances of a character in a file               
-    ECount = data.count("E")
-    eTotal = eCount + ECount
+    eLowerCount = data.count("e")                       # use of .count method to count occurances of a character in a file               
+    eUpperCount = data.count("E")
+    eTotalCount = eCount + ECount
 
-    print("There are {} lowercase 'e' characters in this text file".format(eCount))
-    print("There are {} uppercase 'E' characters in this text file".format(ECount))    
-    print("There are {} total 'e' characters in this text file (case independant)".format(eTotal))
+    print("There are {} lowercase 'e' characters in this text file".format(eLowerCount))
+    print("There are {} uppercase 'E' characters in this text file".format(eUpperCount))    
+    print("There are {} total 'e' characters in this text file (case independant)".format(eTotalCount))
  
 data = readFile(filename)
 eCharacterCount(data)
