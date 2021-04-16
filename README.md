@@ -76,27 +76,29 @@ print(reverse_string)
 ``` Python
 numberList = []
 
-number = input("Enter a positive integer: ")
+number = input("Enter a number: ")
+                                       
 
 while True:
     try:
-        numberInt = int(number)
-
-        if numberInt < 0: 
+        numberInt = int(number)                                            
+        numberList.append(int(number))                                      
+        if numberInt < 0:                                                   
             numberInt = int(input("Enter a Enter a positive number: "))
-            continue            
+            continue                                                           
         else:
-            break                  
+            break                                                             
 
-    except ValueError:                          
+    except ValueError:                                                  
         number = input("Enter an integer: ")    
-        continue                              
+        continue                                                            
 
-while numberInt!=1:              
-    if numberInt % 2 == 0:             
-        numberInt = numberInt // 2     
+
+while numberInt!=1:                                                 
+    if numberInt % 2 == 0:                                              
+        numberInt = numberInt // 2                                          
     else:
-        numberInt = (numberInt * 3) + 1  
+        numberInt = (numberInt * 3) + 1                                    
     numberList.append(numberInt)       
 print(numberList)
 ```
@@ -104,11 +106,11 @@ print(numberList)
 ### Code breakdown:
 - User is asked for a positive integer.
 - **First While loop** is designed to validate the user input in the block of code between  *try* and *except* where:
-    - Tries to convert the input string to an integer, if this fails a *ValueError* is raised and the program asks the <br/> user to *"Enter an integer: "* and jumps back to the start of the while loop.
-    - Assuming that point 1 above has executed sucessfully (i.e the user input can be cast as an integer) the program <br/>checks if the integer is negative, in which case  the program asks user to *"Enter a Enter a positive number: "* and jumps <br/> back to the start of the while loop.
+    - Tries to convert the input string to an integer, if this fails a *ValueError* is raised and the program asks the<br/> user to *"Enter an integer: "* and jumps back to the start of the while loop.
+    - Assuming that point 1 above has executed sucessfully (i.e the user input can be cast as an integer) the program<br/>checks if the integer is negative, in which case  the program asks user to *"Enter a Enter a positive number: "* and jumps <br/> back to the start of the while loop.
  - **Second While loop** performs sucessive calculations on user input and resulting values until the resulting value=1. 
-     - Checks if the remainder of the user input divided by 2 = 0 (i.e is it even), in which case the program re-defines <br/>the *numberInt* variable as itself divide by 2 and appends it to *numberList*.
-     - Checks if the remainder of the user input divided by 2 != 0 (i.e is it odd), in which case the program re-defines <br/>the *numberInt* variable as (itself divided by 3) + 1 and appends it to *numberList*.
+     - Checks if the remainder of the user input divided by 2 = 0 (i.e is it even), in which case the program re-defines<br/>the *numberInt* variable as itself divide by 2 and appends it to *numberList*.
+     - Checks if the remainder of the user input divided by 2 != 0 (i.e is it odd), in which case the program re-defines<br/>the *numberInt* variable as (itself divided by 3) + 1 and appends it to *numberList*.
          - The while loop runs re-uses the newly defined *numberInt* variable until the value = 1, then the list is <br/>printed.
 <br/>
 <br/>
@@ -128,39 +130,40 @@ print(numberList)
 
 ### Code:
 ``` Python
-import datetime
-
 weekIndex = {
-0 : "Weekday",
-1 : "Weekday",
-2 : "Weekday",
-3 : "Weekday",
-4 : "Weekday",
-5 : "Weekend",
-6 : "Weekend"
-    }
+    0 : "Monday",
+    1 : "Tuesday",
+    2 : "Wednesday",
+    3 : "Thursday",
+    4 : "Friday",
+    5 : "Saturday",
+    6 : "Sunday"
+}
 
-todaysDate = datetime.date.today()    
-dayIndex = todaysDate.weekday()
+todaysDate = datetime.date.today()   
+dayIndex = todaysDate.weekday()       
 
-for key, value in weekIndex.items():  
-    if key == dayIndex:                 
-        if value == "Weekend":              
-            print("It is the {}, yay!".format(value))
-        else:
-            print("Yes, unfortunately today is a {}.".format(value)) 
+
+weekendMsg = "It is the weekend, yay! (Day: {})".format(weekIndex[dayIndex])
+weekdayMsg = "Yes, unfortunately today is a weekday (Day: {}).".format(weekIndex[dayIndex])
+
+if dayIndex > 4:
+    print(weekendMsg)
+else:
+    print(weekdayMsg)
 ```
 
 ### Code breakdown:
 - The datetime module is imported
 - Dictionary named weekIndex is declared:
     - Keys are set to 0-6 which represent the index of the days of the week (i.e index 0 = Monday, index 6 = Sunday).
-    - Values distunguish between weekdays or weekend.
+    - Values distunguish between the days of the week.
     - The *todaysDate* variable uses the *.date.today* methods of  datetime library to obtain todays date.
     - The *dayIndex* variable uses the *.weekday* method of  datetime library to convert todays date to an index <br/>number(0 - 6).
-- The key, value pairs of dictionary *weekIndex* are iterated over until the key = *dayIndex* value.
-    - When the above condition is met, the corresponding value of the key is checked in a boolean (to see if it reads <br/>"Weekend" or "Weekday") and one of two print statements are executed.
-
+    <br/>
+- The dayIndex is checked in a if statement, 
+    - if the value is greater than 4 the weekend message is printed and the dictionary is used to print the day of the week using the dayIndex as a reference. 
+    - The else result is the same as the if, except the weekend message is replaced with the weekday message.
 <br/>
 
 ### References:
@@ -177,59 +180,61 @@ for key, value in weekIndex.items():
 
 ### Code:
 ``` Python
+number = input("Enter an positive number: ") 
 
-def userValidation():
-    while True:
-        number = input("Please enter a positive number: ")
+def userValidation(number):
+    while True:     
         try:
-
-            numberFloat = float(number)  
-            if numberFloat < 0:          
-                continue                           
+            numberFloat = float(number)                                                          
+            if numberFloat < 0:
+                number = input("Number is negative, enter an positive number: ")                                           
+                continue                                                                                       
             else:
-                sqrt(numberFloat)           
-                break   
+                sqrt(numberFloat)                                                                    
+                break                                                                                
+                               
+        except ValueError:                                                                       
+            number = input("Cant convert to float, enter an positive number: ")  
+            continue                                                                             
 
-        except ValueError:           
-            continue            
 
 
-def sqrt(numberFloat,tolerance = 0.000001):         
-    estimate = numberFloat                          
-    diff = 9999999999                              
+def sqrt(numberFloat,tolerance = 0.000001):                                          
+    estimate = numberFloat                                                       
+    diff = 9999999999                                                                    
 
-    while diff > tolerance:                         
-        newEstimate = estimate - ((estimate**2 - numberFloat) / (2*estimate))   
-        estimate = newEstimate     
-        diff = newEstimate - estimate                  
-        diff = abs(diff)                               
-                            
-    print("The square root of {} is approx. {}".format(numberFloat,round(newEstimate,2))) 
+    while diff > tolerance:
+        newEstimate = estimate - ((estimate**2 - numberFloat) / (2*estimate))                                
+        diff = newEstimate - estimate                                                        
+        diff = abs(diff)                                                                     
+        estimate = newEstimate 
 
-userValidation() 
+    print("The square root of {} is approx. {}".format(numberFloat,round(newEstimate,2)))   
+
+userValidation(number)  
 ```
 
 ### Code breakdown:
 - User is asked for a positive integer.
     <br/>
 
-- **User Validation function** is designed to validate the user input in the block of code between  *try* and *except* where:
-    1. Tries to convert the input string to a float, if this fails a *ValueError* is raised and the program asks the <br/> user to enter a positive numberand jumps back to the start of the while loop.
-    2. Assuming that point 1 above has executed sucessfully (i.e the user input can be cast as a float) the program <br/>checks if the float is negative, in which case  the program asks user to enter a positive number and jumps  back to the <br/>start of the while loop.
-    3. Condintinal that the user input meets the preceeding criteria, the input is passed into the *sqrt* function.
+- **User Validation function** is designed to validate the user input in the block of code between  *try* and *except* where the function:
+    - Tries to convert the input string to a float, if this fails a *ValueError* is raised and the program asks the<br/> user to enter a positive number and jumps back to the start of the while loop.
+    - Assuming that point 1 above has executed sucessfully (i.e the user input can be cast as a float) the program<br/>checks if the float is negative, in which case  the program asks user to enter a positive number and jumps  back to the<br/>start of the while loop.
+    -  Condintinal that the user input meets the preceeding criteria, the input is passed into the *sqrt* function.
    <br/>
 
  - **Square Root Function** uses Newton's method for approximating square root which works by producing successively better approximations:
      - The function recieves the user input *numberFloat* which is re-defined as *estimate*.
-     - The function parameter *tolerance* is set to a low number. Assigning a low number is important as it will play <br/>a part in determining when the proceeding while loop will break.
-     - A variable called *diff* is set to a large number to ensure the first iteration of the while loop will run <br/>(i.e *while diff > tolerance*).
-     - The *newEstimate* variable is dervied by passing the userinput into Newtons Equation,  and then refining itself <br/>to *estimate* (for further use on next while loop iteration).
-     - If the difference between the *newEstimate* and *estimate* (i.e user input on first iteration) is greater than <br/>the tolerance limit set, the while loop restarts, however when its less the output is printed.
+     - The function parameter *tolerance* is set to a low number. Assigning a low number is important as it will play<br/>a part in determining when the proceeding while loop will break.
+     - A variable called *diff* is set to a large number to ensure the first iteration of the while loop will run<br/>(i.e *while diff > tolerance*).
+     - The *newEstimate* variable contains the result of applying Newtons equation to the userinput. The variable then gets redefining to *estimate* (for further use on next while loop iteration).
+     - If the difference between the *newEstimate* and *estimate* (i.e user input on first iteration) is greater than<br/>the tolerance limit set then the while loop restarts, however when its less the output is printed.
 
 ### References:
 1. Real Python, 2021, Defining Your Own Python Function,Argument Passing, viewed 27 Feb 2021,<br/>*<https://realpython.com/defining-your-own-python-function/#argument-passing>*.
-2. Sıddık Açıl, 2018, Newton Square Root Method in Python, viewed 27 Feb 2021, <br/>*<https://medium.com/@sddkal/newton-square-root-method-in-python-270853e9185d>*
-3. Approximating Square Roots w/ Newton's Method,2018, added by Nerdfirst, viewed 27 Feb 2021 <br/>*<https://www.youtube.com/watch?v=tUFzOLDuvaE&t=1042s>*
+2. Sıddık Açıl, 2018, Newton Square Root Method in Python, viewed 27 Feb 2021,<br/>*<https://medium.com/@sddkal/newton-square-root-method-in-python-270853e9185d>*.
+3. Approximating Square Roots w/ Newton's Method,2018, added by Nerdfirst, viewed 27 Feb 2021<br/>*<https://www.youtube.com/watch?v=tUFzOLDuvaE&t=1042s>*.
 
 <br/>
 <br/>
@@ -242,150 +247,149 @@ userValidation()
 
 ### Code:
 ``` Python
+import sys
 
-import os
-
-os.chdir(os.path.dirname(__file__))     
-
-def userInput():
-    choice = input("Enter text file name for uppercase/lowercase 'e' character count: ").strip()
-    return choice
-
-
-def readFile(choice):
-    while True:
-        try:
-
-            with open(choice,'r') as f:           
-                data = (f.read())                   
-                return data
-
-        except IOError:                        
-            print("This file does not exist")
-            choice =userInput()                   
-            continue                              
+filename = sys.argv[1]                        
+def readFile(filename):
+    with open(filename,'r') as f:                 
+        data = f.read()                               
+        return data
+        
 
 def eCharacterCount(data):
-    e_List = []
-    E_List = [] 
+    eCount = data.count("e")                                   
+    ECount = data.count("E")
+    eTotal = eCount + ECount
 
-    for line in data:
-        for character in line:
-            if character == 'e':
-                e_List.append(character)
-            elif character == 'E':
-                E_List.append(character)
-
-    print("There are {} lowercase 'e' characters in this text file".format(len(e_List)))
-    print("There are {} uppercase 'E' characters in this text file".format(len(E_List)))
-
-
-choice = userInput()                             
-data = readFile(choice)
-eCharacterCount(data)
+    print("There are {} lowercase 'e' characters in this text file".format(eCount))
+    print("There are {} uppercase 'E' characters in this text file".format(ECount))    
+    print("There are {} total 'e' characters in this text file (case independant)".format(eTotal))
  
-
+data = readFile(filename)
+eCharacterCount(data)
 ```
 
 ### Code breakdown:
-# TO BE DONE
+
+- **.argv[]**  #This method of the system library accepts arguements from the command line and stores them<br/>in a list. The list contains the filename as the first argument (index 0) and any further arguments are stored in the proceeding<br/>index values. In this script sys.argv[1] is stored in the filename variable.
+   <br/>
+
+- **readFile Function:**
+    - Filename variable is passed into this function (i.e second argument from command line). 
+    - Function attempts a read file operation using the filename variable and returns the file if successful.
+    - If a file is returned its stored in a variable called data.
+   <br/>
+
+- **eCharacterCount Function:**
+    - This function recieves the data variable which contains the file that was read in previously.
+    - Note: String count() method iterators over a string to return a count of a specified substring.
+    - Three eCount variables are declared, these store the number of upper/lowercase and total e characters<br/>(obtained using the count() method). the contents of these variables are printed with descriptors.
+   <br/>
+
 
 ### References:
 1. Docs.python.org, 2021, 7.2. Reading and Writing Files — Python 3.9.2 Documentation, viewed 05 March 2021,<br/> 
 *<https://docs.python.org/3/tutorial/inputoutput.html>*.
 2. GeeksforGeeks, 2019, With statement in Python, viewed 05 March 2021,<br/>
 *<https://www.geeksforgeeks.orgwith-statement-in-python>*.
-3. Gutenberg.org, 2000, Moby Dick, viewed 05 March 2021,*<https://www.gutenberg.org/files/2701/old/moby10b.txt>*
+3. Gutenberg.org, 2000, Moby Dick, viewed 05 March 2021,*<https://www.gutenberg.org/files/2701/old/moby10b.txt>*.
 
 
 <br/>
 <br/>
-
 
 
 ## Task 7: (plottask.py):
 
-*This program  displays a plot of the functions f(x)=x, g(x)=x^2 and h(x)=x^3 in the range [0, 4] on the one set of axes.*
+*This program displays a plot of the functions f(x)=x, g(x)=x^2 and h(x)=x^3 in the range [0, 4] on the one set of axes.*
 <br/>
 
 ### Code:
 ``` Python
-
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
-x = np.arange(0,4,1)                             
-                                                                                               
-y1  =  x                                         
+x = np.arange(0,5,1)                              
+                                                                                                
+y1  =  x                                          
 y2  =  x**2                                       
 y3  =  x**3                                       
+
+xy1_label = 'f(x)=x'
+xy2_label = 'g(x)=x^2'
+xy3_label = 'h(x)=x^3'    
 
 xy1_Colour = 'red'
 xy2_Colour = 'green'
 xy3_Colour = 'blue'
 
-xy1_linestype = 'dashed'
-xy2_linestype = 'dashed'
-xy3_linestype = 'dashed'
-
-xy1_label = 'f(x)=x'
-xy2_label = 'g(x)=x^2'
-xy3_label = 'h(x)=x^3'
-
 xAxisLabel = 'x - axis'
 yAxisLabel = 'y - axis'
-xAxisFontSize = 12
-yAxisFontSize = 12
+AxisFontSize = 12 
 
+xy_linetype =  'dashed'
 plotAreaColour = "lightgrey"
 
-ax = plt.axes()
 
+def customPlot(): 
+    plt.plot(x, y1, color = xy1_Colour, linestyle = xy_linetype, label = xy1_label)
+    plt.plot(x, y2, color = xy2_Colour, linestyle = xy_linetype, label = xy2_label)
+    plt.plot(x, y3, color = xy3_Colour, linestyle = xy_linetype, label = xy3_label)
 
-def customPlot(ax = None):
-
-    plt.plot(x, y1, color = xy1_Colour, linestyle = xy1_linestype, label = xy1_label)
-    plt.plot(x, y2, color = xy2_Colour, linestyle = xy2_linestype, label = xy2_label)
-    plt.plot(x, y3, color = xy3_Colour, linestyle = xy3_linestype, label = xy3_label)
-
-    plt.xlabel(xAxisLabel, fontsize = xAxisFontSize)
-    plt.ylabel(yAxisLabel, fontsize = yAxisFontSize)
+    plt.xlabel(xAxisLabel, fontsize = AxisFontSize)
+    plt.ylabel(yAxisLabel, fontsize = AxisFontSize)
 
     plt.legend(bbox_to_anchor=(0,1.02,1,0.2), loc="lower left",mode="expand", borderaxespad=0, ncol=3, fontsize = 14)
     plt.grid(True,which="both", linestyle='--')
 
     ax = plt.axes()
     ax.set_facecolor(plotAreaColour)
-    plt.show()
     return plt
 
 
-def writePlot(writePlot):
+def writePlot(myPlot):
+    os.chdir(os.path.dirname(__file__))
     plt.savefig('plottask.png')
-    
+    plt.show()
+
 
 myPlot = customPlot()
 writePlot(myPlot)
- 
-
 ```
 
 ### Code breakdown:
-# TO BE DONE
+
+- **Declaring  Variables** 
+    - An array of 0 to 4 in steps of 1 are stored in the x variable, achieved using the numpy library.
+    - x, x squared and x cubed arrays are stored in y, y1 and y2 variables respectively.
+    - Plot descriptors such as axis labels, legend labels, linetype, series colours and plot colour are stored in<br/>multiple variables 
+
+- **customPlot function** 
+    - Passes the pre-declared plot variables into the of the plot function of the Matplotlib library.
+    - Adds custom x and y Axis labels and legend then returns the plot.
+    - Plot is stored in myPlot variable.
+
+- **writePlot Function:**
+    - This function recieves the myPlot variable (i.e customPlot return statement).
+    - The directory is changed to that of the this file using *os.chdir(os.path.dirname(__file__)).*
+    - plot stored in myPlot variable is saved as extension .png.
+
+
 
 ### References:
 1. Eric, 2015, Save matplotlib file to a directory, viewed 11 March 2021,<br/>
 *<https://stackoverflow.com/questions/11373610/save-matplotlib-file-to-a-directory>*.
 2. Nick T, 2014, How to change plot background color?, viewed 11 March 2021,<br/>
-*<https://stackoverflow.com/questions/14088687/how-to-change-plot-background-color>*
+*<https://stackoverflow.com/questions/14088687/how-to-change-plot-background-color>*.
 3. Matplotlib.org, 2021, Controlling the legend entries, Matplotlib version 3.3.3, viewed 11 March 2021,<br/>
-*<https://matplotlib.org/3.3.3/tutorials/intermediate/legend_guide.html>*
+*<https://matplotlib.org/3.3.3/tutorials/intermediate/legend_guide.html>*.
 4. Matplotlib.org, 2021, Plotting multiple sets of data, Matplotlib version 3.3.4, viewed 11 March 2021,<br/>
-*<https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html>*
+*<https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html>*.
 5. Moonbooks.org, 2019, How to add a grid on a figure in matplotlib?, viewed 11 March 2021,<br/>
-*<https://moonbooks.org/Articles/How-to-add-a-grid-on-a-figure-in-matplotlib-/>*
+*<https://moonbooks.org/Articles/How-to-add-a-grid-on-a-figure-in-matplotlib-/>*.
 6. Real Python, 2021, NumPy arange(): How to Use np.arange(), viewed 11 March 2021,<br/>
-*<https://realpython.com/how-to-use-numpy-arange/>*
+*<https://realpython.com/how-to-use-numpy-arange/>*.
 
 <br/>
 <br/>

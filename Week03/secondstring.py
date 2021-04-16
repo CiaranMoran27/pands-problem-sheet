@@ -6,3 +6,6 @@
 sentence = input("Please enter a sentence: ")
 reverse_string = sentence[::-2]
 print(reverse_string)
+
+# References: 
+# Stored on read me file

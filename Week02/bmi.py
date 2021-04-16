@@ -14,3 +14,7 @@ bmi = round(weight / metres_sq,2)
 
 #Prints BMI Output
 print("BMI is " + str(bmi) + ' kg/m²')
+
+
+# References: 
+# Stored on read me file
