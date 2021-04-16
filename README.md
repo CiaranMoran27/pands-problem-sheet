@@ -380,8 +380,9 @@ writePlot(myPlot)
 
 ### Output Plot:
 <p align="center">
-  <img src="plottask.png" width="500" />
-</p>  <Source: https://image.ibb.co/gw4Gen/Index_GMIT.png>
+  <img src="plottask.png" width="600" height="500" />
+</p>  
+
 
 ### References:
 1. Eric, 2015, Save matplotlib file to a directory, viewed 11 March 2021,<br/>
