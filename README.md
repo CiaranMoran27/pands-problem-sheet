@@ -380,7 +380,7 @@ writePlot(myPlot)
 
 ### Output Plot:
 <p align="center">
-  <img src="plottask.png" width="600" height="500" />
+  <img src="Week08/plottask.png" width="600" height="500" />
 </p>  
 
 
