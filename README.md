@@ -107,7 +107,7 @@ print(numberList)
 - User is asked for a positive integer.
 - **First While loop** is designed to validate the user input in the block of code between  *try* and *except* where:
     - Tries to convert the input string to an integer, if this fails a *ValueError* is raised and the program asks the<br/> user to *"Enter an integer: "* and jumps back to the start of the while loop.
-    - Assuming that point 1 above has executed sucessfully (i.e the user input can be cast as an integer) the program<br/>checks if the integer is negative, in which case the program asks user to "Enter a positive number:" and jumps<br/>back to the start of the while loop.
+    - Assuming that point 1 above has executed sucessfully (i.e the user input can be cast as an integer) the program checks if the integer is negative, in which case the program asks user to "Enter a positive number:" and jumps<br/>back to the start of the while loop.
  - **Second While loop** performs sucessive calculations on user input and resulting values until the resulting value=1. 
      - Checks if the remainder of the user input divided by 2 = 0 (i.e is it even), in which case the program re-defines<br/>the *numberInt* variable as itself divide by 2 and appends it to *numberList*.
      - Checks if the remainder of the user input divided by 2 != 0 (i.e is it odd), in which case the program re-defines<br/>the *numberInt* variable as (itself divided by 3) + 1 and appends it to *numberList*.
@@ -168,7 +168,7 @@ else:
 
 ### References:
 1. Sweigart, A, 2015, Automate the boring stuff with Python, Dictionaries and structuring data, No Starch press,<br/> San Francisco, pp 120.
-2. Docs.python.org, 2021, Datetime — Basic date and time types — Python 3.9.2 Documentation, viewed 20 Feb 2021,<br/>*<https://docs.python.org/3/library/datetime.html#datetime.datetime.weekday>*.
+2. Docs.python.org, 2021, Datetime — Basic date and time types — Python 3.9.2 Documentation, viewed 20 Feb 2021,*<https://docs.python.org/3/library/datetime.html#datetime.datetime.weekday>*.
 
 <br/>
 
@@ -218,9 +218,9 @@ userValidation(number)
     <br/>
 
 - **User Validation function** is designed to validate the user input in the block of code between  *try* and *except* where the function:
-    - Tries to convert the input string to a float, if this fails a *ValueError* is raised and the program asks the<br/> user to enter a positive number and jumps back to the start of the while loop.
-    - Assuming that point 1 above has executed sucessfully (i.e the user input can be cast as a float) the program<br/>checks if the float is negative, in which case the program asks user to enter a positive number and jumps back to the<br/>start of the while loop.
-    -  Condintinal that the user input meets the preceeding criteria, the input is passed into the *sqrt* function.
+    - Tries to convert the input string to a float, if this fails a *ValueError* is raised and the program asks the user to enter a positive number and jumps back to the start of the while loop.
+    - Assuming that point 1 above has executed sucessfully (i.e the user input can be cast as a float) the program checks if the float is negative, in which case the program asks user to enter a positive number and jumps back to the start of the while loop.
+    - Condintinal that the user input meets the preceeding criteria, the input is passed into the *sqrt* function.
    <br/>
 
  - **Square Root Function** uses Newton's method for approximating square root which works by producing successively better approximations:
