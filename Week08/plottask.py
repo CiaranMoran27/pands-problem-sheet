@@ -24,7 +24,7 @@ xy3_Colour = 'blue'
 
 xAxisLabel = 'x - axis'
 yAxisLabel = 'y - axis'
-AxisFontSize = 12 
+axisFontSize = 12 
 
 xy_linetype =  'dashed'
 plotAreaColour = "lightgrey"
@@ -40,8 +40,8 @@ def customPlot():
     plt.plot(x, y3, color = xy3_Colour, linestyle = xy_linetype, label = xy3_label)
 
     ## declare axis labels
-    plt.xlabel(xAxisLabel, fontsize = AxisFontSize)
-    plt.ylabel(yAxisLabel, fontsize = AxisFontSize)
+    plt.xlabel(xAxisLabel, fontsize = axisFontSize)
+    plt.ylabel(yAxisLabel, fontsize = axisFontSize)
 
     # plot legend and grid 
     plt.legend(bbox_to_anchor=(0,1.02,1,0.2), loc="lower left",mode="expand", borderaxespad=0, ncol=3, fontsize = 14)
